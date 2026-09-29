@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useAuth } from "../../hooks/use-auth-safe";
+import { Chat } from "../chat";
 interface IFormInput {
     numberReceiver:string;
 }
@@ -17,9 +18,9 @@ const { register, handleSubmit } = useForm<IFormInput>();
 
   
 
-  return(<> {state && (
-        <h1>Сеанс - {state.numberReceiver} - {user?.apiTokenInstance}</h1>
-
+  return(<> {state && (<>
+    <h1>Сеанс - {state.numberReceiver} - {user?.apiTokenInstance}</h1>
+<Chat props={state.numberReceiver} /></>
     )}
   <form onSubmit={handleSubmit(handleCreateNewReceiverSession)}>
         <section>
